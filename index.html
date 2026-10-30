@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>langssy | Cyber Security & Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-dark: #050508;
+      --bg-card: #0f111a;
+      --bg-hover: #161b22;
+      --neon-green: #00ff41;
+      --neon-cyan: #00e5ff;
+      --text-main: #e6edf3;
+      --text-sub: #8b949e;
+      --border-color: #30363d;
+      --font-code: 'Fira Code', monospace;
+      --font-main: 'Poppins', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+      /* Efek Grid Cyber */
+      background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--neon-green); border-radius: 4px; }
+
+    /* ========== NAVBAR ========== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(5, 5, 8, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      font-family: var(--font-code);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+    }
+    
+    .logo span { color: var(--neon-green); text-shadow: 0 0 10px rgba(0, 255, 65, 0.6); }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav ul a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    nav ul a:hover { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); }
+    nav ul a::before { content: '> '; color: var(--neon-green); }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10%;
+      padding-top: 80px;
+      gap: 50px;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-text .greeting {
+      font-family: var(--font-code);
+      color: var(--neon-green);
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .hero-text h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .hero-text h1 span {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    }
+
+    .typing-text {
+      font-family: var(--font-code);
+      font-size: 1.5rem;
+      color: var(--text-sub);
+      margin-bottom: 30px;
+      height: 35px;
+    }
+
+    .typing-text::after {
+      content: '_';
+      animation: blink 1s infinite;
+      color: var(--neon-green);
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-text p {
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 550px;
+    }
+
+    .hero-btns { display: flex; gap: 20px; }
+
+    .btn {
+      padding: 14px 32px;
+      border-radius: 5px;
+      font-family: var(--font-code);
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: transparent;
+      color: var(--neon-green);
+      border: 2px solid var(--neon-green);
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--neon-green);
+      color: var(--bg-dark);
+      box-shadow: 0 0 25px var(--neon-green);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
+
+    /* Hero Terminal */
+    .hero-img { flex: 1; display: flex; justify-content: center; }
+    .terminal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+    .term-header {
+      background: #161b22;
+      padding: 10px 15px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      gap: 8px;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+    .term-body {
+      padding: 20px;
+      font-family: var(--font-code);
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    .term-body .prompt { color: var(--neon-green); }
+    .term-body .command { color: #fff; }
+    .term-body .output { color: var(--text-sub); }
+
+    /* ========== SECTIONS GENERAL ========== */
+    section { padding: 100px 10%; }
+    
+    .section-title {
+      font-family: var(--font-code);
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 50px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .section-title::before {
+      content: '//';
+      color: var(--neon-green);
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-color);
+    }
+
+    /* ========== PEMBAHASAN LENGKAP (EDUKASI) ========== */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .edu-card {
+      background: var(--bg-card);
+      border-left: 4px solid var(--neon-cyan);
+      border-radius: 5px;
+      padding: 25px;
+      transition: 0.3s;
+    }
+
+    .edu-card:hover {
+      background: var(--bg-hover);
+      transform: translateX(5px);
+      box-shadow: 0 5px 20px rgba(0, 229, 255, 0.1);
+    }
+
+    .edu-card h3 {
+      color: var(--neon-cyan);
+      font-family: var(--font-code);
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .edu-card p {
+      color: var(--text-sub);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    /* ========== SKILLS ========== */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+    .skills-container { display: flex; flex-direction: column; gap: 20px; }
+    
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-code);
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+    .skill-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-card);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .skill-fill {
+      height: 100%;
+      background: var(--neon-green);
+      box-shadow: 0 0 10px var(--neon-green);
+      width: 0%;
+      transition: width 1.5s ease-in-out;
+    }
+
+    /* ========== CONTACT ========== */
+    .contact-section { text-align: center; }
+    .contact-section p { color: var(--text-sub); margin-bottom: 40px; font-size: 1.1rem; }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 35px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: var(--font-code);
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .contact-btn:hover {
+      border-color: var(--neon-green);
+      color: var(--neon-green);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .contact-btn i { font-size: 1.5rem; }
+    
+    /* Warna Icon Spesifik */
+    .wa-icon { color: #25D366; }
+    .tg-icon { color: #0088cc; }
+    .gm-icon { color: #EA4335; }
+
+    /* ========== FOOTER ========== */
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid var(--border-color);
+      font-family: var(--font-code);
+      font-size: 0.9rem;
+      color: var(--text-sub);
+    }
+
+    footer span { color: var(--neon-green); }
+
+    /* ========== SCROLL REVEAL ========== */
+    .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; text-align: center; padding-top: 120px; gap: 40px; }
+      .hero-text h1 { font-size: 3rem; }
+      .hero-text p { margin: 0 auto 30px; }
+      .hero-btns { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo"><span>langssy</span></div>
+    <ul>
+      <li><a href="#home">home</a></li>
+      <li><a href="#pembahasan">pembahasan</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <div class="greeting">System initialized. Welcome to,</div>
+      <h1>langssy<span>.</span></h1>
+      <div class="typing-text" id="typing"></div>
+      <p>Platform portofolio & pusat edukasi Cyber Security. Membahas tuntas seputar Offensive Security, Network Defense, dan OSINT untuk menciptakan ekosistem digital yang lebih aman.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary"><i class="fas fa-terminal"></i> Hubungi Saya</a>
+        <a href="#pembahasan" class="btn btn-secondary"><i class="fas fa-book-open"></i> Mulai Belajar</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="terminal">
+        <div class="term-header">
+          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+        </div>
+        <div class="term-body">
+          <div><span class="prompt">root@langssy:~#</span> <span class="command">whoami</span></div>
+          <div class="output">Cyber Security Specialist & Educator</div>
+          <div><span class="prompt">root@langssy:~#</span> <span class="command">./scan_network.sh</span></div>
+          <div class="output">[+] Initiating Nmap scan...<br>[+] Found 3 open ports.<br>[+] Analyzing vulnerabilities...</div>
+          <div><span class="prompt">root@langssy:~#</span> <span class="command">sudo systemctl start defense</span></div>
+          <div class="output" style="color: var(--neon-green);">[OK] Firewall active. System secured.</div>
+          <div><span class="prompt">root@langssy:~#</span> <span class="command">_</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEMBAHASAN LENGKAP (EDUKASI) -->
+  <section id="pembahasan" class="reveal">
+    <h2 class="section-title">Pembahasan Lengkap</h2>
+    <div class="edu-grid">
+      <!-- Pembahasan 1 -->
+      <div class="edu-card">
+        <h3><i class="fas fa-shield-alt"></i> Apa itu Cyber Security?</h3>
+        <p>Cyber Security adalah praktik melindungi sistem, jaringan, dan program dari serangan digital. Tujuan utamanya adalah menjaga <b>CIA Triad</b>: <i>Confidentiality</i> (Kerahasiaan data), <i>Integrity</i> (Integritas/keaslian data), dan <i>Availability</i> (Ketersediaan akses). Tanpa keamanan siber, data sensitif seperti informasi keuangan dan privasi pengguna sangat rentan dicuri.</p>
+      </div>
+      
+      <!-- Pembahasan 2 -->
+      <div class="edu-card">
+        <h3><i class="fas fa-user-secret"></i> Mengenal Ethical Hacking</h3>
+        <p>Ethical Hacking (White Hat) adalah tindakan menyusup ke sistem komputer untuk menemukan celah keamanan <b>dengan izin resmi</b>. Tujuannya bukan untuk merusak, melainkan untuk melaporkan kerentanan (Vulnerability) agar bisa diperbaiki sebelum dieksploitasi oleh peretas jahat (Black Hat). Proses ini biasanya disebut sebagai Penetration Testing (Pentest).</p>
+      </div>
+
+      <!-- Pembahasan 3 -->
+      <div class="edu-card">
+        <h3><i class="fas fa-bug"></i> Jenis-Jenis Serangan Umum</h3>
+        <p>Beberapa serangan siber paling sering terjadi meliputi: <b>Phishing</b> (penipuan via email/web palsu untuk mencuri password), <b>Ransomware</b> (mengunci data korban dan meminta tebusan), <b>DDoS</b> (membanjiri server dengan traffic palsu hingga down), dan <b>SQL Injection</b> (menyusup ke database melalui form input yang tidak aman).</p>
+      </div>
+
+      <!-- Pembahasan 4 -->
+      <div class="edu-card">
+        <h3><i class="fas fa-search"></i> Kekuatan OSINT</h3>
+        <p><b>OSINT (Open Source Intelligence)</b> adalah teknik mengumpulkan informasi dari sumber publik (internet) tanpa menyentuh sistem target secara langsung. OSINT sering digunakan untuk *Reconnaissance* (pengintaian awal). Tools seperti Shodan, Google Dorking, dan WhatsMyName sangat ampuh untuk memetakan jejak digital target sebelum melakukan tindakan lebih lanjut.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="reveal">
+    <h2 class="section-title">Core Competencies</h2>
+    <div class="about-grid">
+      <div class="about-text" style="color: var(--text-sub); line-height: 1.8;">
+        <p>Dengan dedikasi tinggi di bidang keamanan informasi, gue terus melakukan riset dan pengujian terhadap berbagai arsitektur sistem. Fokus gue adalah mengidentifikasi *loophole* sebelum pihak yang tidak bertanggung jawab menemukannya.</p>
+        <br>
+        <p>Selain *offensive* security, gue juga mendalami aspek *defensive* seperti analisis malware, konfigurasi firewall, dan *incident response*.</p>
+      </div>
+      <div class="skills-container">
+        <div class="skill-box">
+          <div class="skill-info"><span>Penetration Testing (VAPT)</span><span>92%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92%"></div></div>
+        </div>
+        <div class="skill-box">
+          <div class="skill-info"><span>Web Application Security</span><span>88%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
+        </div>
+        <div class="skill-box">
+          <div class="skill-info"><span>OSINT & Reconnaissance</span><span>95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95%"></div></div>
+        </div>
+        <div class="skill-box">
+          <div class="skill-info"><span>Network Security & Defense</span><span>85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section reveal">
+    <h2 class="section-title">Hubungi Saya</h2>
+    <p>Mari berkolaborasi, konsultasi keamanan, atau sekadar berdiskusi seputar Cyber Security.</p>
+    <div class="contact-links">
+      <!-- WhatsApp -->
+      <a href="https://wa.me/62883120129617" target="_blank" class="contact-btn">
+        <i class="fab fa-whatsapp wa-icon"></i> WhatsApp
+      </a>
+      <!-- Telegram -->
+      <a href="https://t.me/kenzckk" target="_blank" class="contact-btn">
+        <i class="fab fa-telegram tg-icon"></i> Telegram
+      </a>
+      <!-- Gmail -->
+      <a href="mailto:andaakepo120@gmail.com" class="contact-btn">
+        <i class="fas fa-envelope gm-icon"></i> Gmail
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>System secured by <span>langssy</span> &copy; 2024. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // 1. TYPING EFFECT
+    const textArray = ["Cyber Security Enthusiast", "Ethical Hacker", "OSINT Researcher", "Network Defender"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById('typing');
+
+    function type() {
+      const currentText = textArray[textIndex];
+      
+      if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = isDeleting ? 50 : 100;
+
+      if (!isDeleting && charIndex === currentText.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % textArray.length;
+        typeSpeed = 500;
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(type, 1000);
+    });
+
+    // 2. SCROLL REVEAL ANIMATION & SKILL BARS
+    const revealElements = document.querySelectorAll('.reveal');
+    const skillFills = document.querySelectorAll('.skill-fill');
+
+    const revealOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          
+          // Animasi skill bar kalau section skills kelihatan
+          if (entry.target.id === 'skills') {
+            skillFills.forEach(fill => {
+              fill.style.width = fill.getAttribute('data-width');
+            });
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => revealOnScroll.observe(el));
+  </script>
+</body>
+</html>
